@@ -7,13 +7,33 @@ import java.io.*;
  */
 public class UsingBufferedReader {
     public static void main(String[] args) throws IOException {
+    	
+    	// -------------- Test reading user given file name. --------------------
+    	
+    	String fileName = args[0].toLowerCase();
+    	BufferedReader inputStream = null;
+    	
+    	StopWatch.start();
+    	
+    	switch (fileName) {
+		case "input1mb":
+			inputStream = new BufferedReader(new FileReader(DumpDataWriter.input1MB));
+			break;
+		case "input10mb":
+			inputStream = new BufferedReader(new FileReader(DumpDataWriter.input10MB));
+			break;
+		case "input100mb":
+			inputStream = new BufferedReader(new FileReader(DumpDataWriter.input100MB));
+			break;
+		case "input1000mb":
+			inputStream = new BufferedReader(new FileReader(DumpDataWriter.input1000MB));
+			break;
+		default:
+			System.out.println("Invalid file name. Please choose from: input1MB, input10MB, input100MB, input1000MB");
+			return;
+	}
+    	
 
-
-        //-------------- Test reading 1 MB file. --------------------
-
-        StopWatch.start();
-
-        BufferedReader inputStream= new BufferedReader(new FileReader(DumpDataWriter.input1MB));
         while (inputStream.read()!=-1){}
 
         long duration = StopWatch.stop();
@@ -21,18 +41,30 @@ public class UsingBufferedReader {
         
         inputStream.close();
 
+        //-------------- Test reading 1 MB file. --------------------
+    	
+//        StopWatch.start();
+//
+//        BufferedReader inputStream= new BufferedReader(new FileReader(DumpDataWriter.input1MB));
+//        while (inputStream.read()!=-1){}
+//
+//        long duration = StopWatch.stop();
+//        System.out.println(duration + " milsec");
+//        
+//        inputStream.close();
+
 
         //-------------- Test reading 10 MB file. --------------------
 
-        StopWatch.start();
-
-        BufferedReader inputStream2= new BufferedReader(new FileReader(DumpDataWriter.input10MB));
-        while (inputStream2.read()!=-1){}
-
-        long duration2 = StopWatch.stop();
-        System.out.println(duration2 + " milsec");
-
-        inputStream2.close();
+//        StopWatch.start();
+//
+//        BufferedReader inputStream2= new BufferedReader(new FileReader(DumpDataWriter.input10MB));
+//        while (inputStream2.read()!=-1){}
+//
+//        long duration2 = StopWatch.stop();
+//        System.out.println(duration2 + " milsec");
+//
+//        inputStream2.close();
 
         /*
         //-------------- Test reading 100 MB file. --------------------
